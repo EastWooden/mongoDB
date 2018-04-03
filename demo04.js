@@ -14,11 +14,13 @@ db.workmate.update({name: 'xiaowang'},{$push:{interesting:'dra1w'}})
 // 它主要的作用是，检查一个值是否存在，如果不存在再执行操作，存在就不执行
 
 db.workmate.update({ name: 'xiaoWang', "interest": { $ne: 'playGame' } }, { $push: { interest: 'Game' } })
+
 // $addToSet 升级版的$ne
 // 例子：我们现在要查看小王(xiaoWang)兴趣(interest)中有没有阅读（readBook）这项，没有则加入读书(readBook)的兴趣.
 db.workmate.update({ name: "xiaoWang" }, { $addToSet: { interest: "readBook" } })
 
 // $each 批量追加
+
 // 它可以传入一个数组，一次增加多个值进去，相当于批量操作，性能同样比循环操作要好很多，
 // 这个是需要我们注意的，工作中也要先组合成数组，然后用批量的形式进行操作。
 
